@@ -11,7 +11,7 @@ nav.addEventListener("click", (event) => {
     event.target.style.backgroundColor = '#17A2B8';
     event.target.style.borderRadius = '3px';
     event.target.style.color = 'white';
-    event.preventDefault();
+    event.stopPropagation()
 });
 
 const allButtons = document.querySelectorAll('.btn');
@@ -62,7 +62,7 @@ containerAll.forEach(node => {
     })
     node.addEventListener('dblclick', function(eventObject){
         eventObject.target.style.color = "purple";
-        eventObject.preventDefault();
+        event.stopPropagation()
     })
 });
 
