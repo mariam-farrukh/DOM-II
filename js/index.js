@@ -11,6 +11,7 @@ nav.addEventListener("click", (event) => {
     event.target.style.backgroundColor = '#17A2B8';
     event.target.style.borderRadius = '3px';
     event.target.style.color = 'white';
+    event.preventDefault();
 });
 
 const allButtons = document.querySelectorAll('.btn');
@@ -49,30 +50,38 @@ headerImage.onwheel = zoom;
 let allParagraphs = document.querySelectorAll('p');
 allParagraphs.forEach(node => {
     node.addEventListener('copy', function(event){	    
-        alert("You are copying a paragraph!");
+        alert("Stop copying!");
     })
 })
 
 //changes text color when doubleclicked
-const containerAll = document.querySelector('.container');
-containerAll.addEventListener('dblclick', function(eventObject){
+const containerAll = document.querySelectorAll('.container');
+containerAll.forEach(node => {
+    node.addEventListener('click', function(eventObject){
     eventObject.target.style.color = "pink";
+    })
+    node.addEventListener('dblclick', function(eventObject){
+        eventObject.target.style.color = "purple";
+        eventObject.preventDefault();
+    })
 });
 
 
 //prevents contextmenu from appearing in footer section
-footer = document.querySelector('.footer');
+const footer = document.querySelector('.footer');
 footer.addEventListener('contextmenu', function(){
     event.preventDefault();
 })
 
-const middleImg = document.querySelector(".img-content");
+const middleImg = document.querySelectorAll(".img-content");
  // Drags image to scale in size
-middleImg.addEventListener('drag', (event) => {event.target.style.transform = 'scale(0.75)';
+middleImg.forEach(node => {
+    node.addEventListener('drag', (event) => {event.target.style.transform = 'scale(0.75)';
+    });
 });
 
-window.addEventListener("load", function(event) {
-    alert("Page had loaded! Try some features on the page!");
+window.addEventListener("load", function() {
+    alert("Page has loaded! Try out some of the features on the page!");
 });
 
 window.addEventListener('resize', () => alert("Resizing!"))
