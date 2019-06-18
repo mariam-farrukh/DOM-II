@@ -17,4 +17,33 @@ nav.addEventListener("dblclick", (event) => {
 const body = document.querySelector('body');
 const header = document.querySelector('header');
 body.addEventListener("keydown", () => {
-    header.style.opacity = "0.8"});
+    header.style.opacity = "0.8";
+});
+
+//borrowed skelton from MDN, but scales the header Image
+function zoom(event) {
+    event.preventDefault();
+  
+    scale += event.deltaY * -0.005;
+  
+    // Restrict scale
+    scale = Math.min(Math.max(.5, scale), 1.5);
+  
+    // Apply scale transform
+    headerImage.style.transform = `scale(${scale})`;
+}
+let scale = 1;
+const headerImage = document.querySelector('img');
+headerImage.onwheel = zoom;
+
+let allParagraphs = document.querySelectorAll('p');
+allParagraphs.forEach(node => {
+    node.addEventListener('copy', function(event){	    
+        alert("You are copying a paragraph!");
+    })
+})
+
+const container = document.querySelectorAll('.container');
+container.addEventListener('click', function(eventObject){
+    eventObject.target.style.display = "none";
+});
