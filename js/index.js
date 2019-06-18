@@ -5,12 +5,21 @@ const navLogo = document.querySelector('.logo-heading');
 navLogo.addEventListener("mouseover", (event) => {
     event.target.style.transform = "scale(1.25)"});
 
-//Changes background color of nav links when double clicked.
+//Changes background color of nav links when clicked.
 const nav = document.querySelector(".nav");
-nav.addEventListener("dblclick", (event) => {
+nav.addEventListener("click", (event) => {
     event.target.style.backgroundColor = '#17A2B8';
     event.target.style.borderRadius = '3px';
     event.target.style.color = 'white';
+});
+
+const allButtons = document.querySelectorAll('.btn');
+
+allButtons.forEach(node => {
+    node.addEventListener('click', function(){
+       let name = prompt('Enter name');
+        console.log(name + ' you are signed up!');
+    })
 });
 
 //changes header opacity with any key pressed.
@@ -36,6 +45,7 @@ let scale = 1;
 const headerImage = document.querySelector('img');
 headerImage.onwheel = zoom;
 
+//Sets an alert when trying to copy paragraphs
 let allParagraphs = document.querySelectorAll('p');
 allParagraphs.forEach(node => {
     node.addEventListener('copy', function(event){	    
@@ -43,7 +53,26 @@ allParagraphs.forEach(node => {
     })
 })
 
-const container = document.querySelectorAll('.container');
-container.addEventListener('click', function(eventObject){
-    eventObject.target.style.display = "none";
+//changes text color when doubleclicked
+const containerAll = document.querySelector('.container');
+containerAll.addEventListener('dblclick', function(eventObject){
+    eventObject.target.style.color = "pink";
 });
+
+
+//prevents contextmenu from appearing in footer section
+footer = document.querySelector('.footer');
+footer.addEventListener('contextmenu', function(){
+    event.preventDefault();
+})
+
+const middleImg = document.querySelector(".img-content");
+ // Drags image to scale in size
+middleImg.addEventListener('drag', (event) => {event.target.style.transform = 'scale(0.75)';
+});
+
+window.addEventListener("load", function(event) {
+    alert("Page had loaded! Try some features on the page!");
+});
+
+window.addEventListener('resize', () => alert("Resizing!"))
